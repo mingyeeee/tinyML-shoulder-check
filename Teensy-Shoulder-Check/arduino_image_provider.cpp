@@ -1,7 +1,8 @@
 /* 
  * Modified by: Mingye Chen
- * Date: 2021-03-07
+ * Date: 2021-03-12
  * Copyright 2019 The TensorFlow Authors. All Rights Reserved.
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -95,7 +96,39 @@ TfLiteStatus InitCamera(tflite::ErrorReporter* error_reporter) {
   // Specify the smallest possible resolution
   myCAM.OV2640_set_JPEG_size(OV2640_160x120);
   delay(100);
-  myCAM.OV2640_set_Light_Mode(Office);
+  //---------lighting mode selection using buttons---------
+  pinMode(15, INPUT);
+  pinMode(16, INPUT);
+  pinMode(17, INPUT);
+  
+  int startTime = millis();
+  bool lightingModeSelected = false;
+  // wait 2s for a button press
+  while(millis()-startTime < 5000){
+    if(digitalRead(15) == HIGH){
+      myCAM.OV2640_set_Light_Mode(Office);
+      TF_LITE_REPORT_ERROR(error_reporter, "Office lighting mode was selected");
+      lightingModeSelected = true;
+      break;
+    }
+    if(digitalRead(16) == HIGH){
+      myCAM.OV2640_set_Light_Mode(Sunny);
+      TF_LITE_REPORT_ERROR(error_reporter, "Sunny lighting mode was selected");
+      lightingModeSelected = true;
+      break;
+    }
+    if(digitalRead(17) == HIGH){
+      myCAM.OV2640_set_Light_Mode(Cloudy);
+      TF_LITE_REPORT_ERROR(error_reporter, "Cloudy lighting mode was selected");
+      lightingModeSelected = true;
+      break;
+    }
+  }
+  // default if nothing was selected
+  if(!lightingModeSelected){
+    myCAM.OV2640_set_Light_Mode(Auto);
+    TF_LITE_REPORT_ERROR(error_reporter, "Auto lighting mode default set");
+  }
   delay(100);
   return kTfLiteOk;
 }

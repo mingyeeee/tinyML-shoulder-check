@@ -1,9 +1,9 @@
 # TinyML Shoulder Check
-Low power rear view camera system for cycling to perform people detection using Tensorflow Lite for Microcontrollers. Alerts cyclist if some on a bike or not is approaching them.
+Frequent shoulder checking for other cyclists or people while cycling can be dangerous as your attention is not on what in front of you. TinyML Should Check is a low power rear view camera system for cycling to perform people detection using Tensorflow Lite for Microcontrollers. This device alerts cyclist if there is another cyclist or person behind them by flashing an LED on the handlebars.
 
 **Still a work in progress**
 
-## Setup
+## Software Setup
 Currently using model from Tensorflow lite for micros [repo](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/micro/examples/person_detection/arduino).
 Planning on training a model to include cars and bikes
 

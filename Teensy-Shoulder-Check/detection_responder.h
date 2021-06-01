@@ -1,6 +1,6 @@
 /* 
  * Modified by: Mingye Chen
- * Date: 2021-03-07
+ * Date: 2021-05-31
  * Copyright 2019 The TensorFlow Authors. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,5 +33,7 @@ limitations under the License.
 // particular applications.
 void RespondToDetection(tflite::ErrorReporter* error_reporter,
                         int8_t person_score, int8_t no_person_score);
+
+static int postivityCount;
 
 #endif  // TENSORFLOW_LITE_MICRO_EXAMPLES_PERSON_DETECTION_DETECTION_RESPONDER_H_

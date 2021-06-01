@@ -26,4 +26,4 @@ SCL | 19
 Other Components | Teensy Pin
 ------------ | -------------
 LED (person detected) | 2
-potentiometer (lighting mode selector) | 0
+Potentiometer (lighting mode selector) | A0
